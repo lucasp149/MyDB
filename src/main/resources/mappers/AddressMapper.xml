@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.AddressRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into addresses(street_name, number, city_id) values (#{streetName},#{number},#{city.id})
+    </insert>
+
+    <update id="updateById">
+        UPDATE addresses
+        set street_name = #{address.streetName}, number = #{address.number}, city_id = #{address.city.id}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from addresses where id = #{id}
+    </delete>
+
+    <sql id="getter">
+        SELECT
+        a.id,
+        a.street_name,
+        a.number,
+        c.id as city_id,
+        c.name as city_name
+        from addresses a left join cities c
+        on a.city_id = c.id
+    </sql>
+
+    <select id="getById" resultMap="AddressResultMap">
+       <include refid="getter"/>
+        where a.id = #{id};
+    </select>
+
+    <select id="getAll" resultMap="AddressResultMap">
+        <include refid="getter"/>
+    </select>
+
+    <resultMap id="AddressResultMap" type="com.solvd.storeDataBase.domain.Address" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="street_name" property="streetName"/>
+        <result column="number" property="number"/>
+        <association property="city"
+                     columnPrefix="city_"
+                     resultMap="com.solvd.storeDataBase.persistence.CityRepository.CityResultMap"/>
+    </resultMap>
+
+</mapper>

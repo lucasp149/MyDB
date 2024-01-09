@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.StoreRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into stores(name,address_id) values (#{name},#{address.id})
+    </insert>
+
+    <update id="updateById">
+        UPDATE stores set
+        name = #{store.name},
+        address_id = #{store.address.id}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from stores where id = #{id}
+    </delete>
+
+    <sql id="getter">
+        SELECT
+        s.id,
+        s.name,
+        a.id as address_id,
+        a.street_name as address_street_name,
+        a.number as address_number,
+        c.id as address_city_id,
+        c.name as address_city_name,
+        z.id as address_city_zone_id,
+        z.name as address_city_zone_name
+        from stores s
+        left join addresses a
+        on s.address_id = a.id
+        left join cities c
+        on a.city_id = c.id
+        left join zones z
+        on c.zone_id = z.id
+    </sql>
+
+    <select id="getById" resultMap="StoreResultMap">
+        <include refid="getter"/>
+        where s.id = #{id};
+    </select>
+
+    <select id="getAll" resultMap="StoreResultMap">
+        <include refid="getter"/>
+    </select>
+
+    <resultMap id="StoreResultMap" type="com.solvd.storeDataBase.domain.Store" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="address"
+                     columnPrefix="address_"
+                     resultMap="com.solvd.storeDataBase.persistence.AddressRepository.AddressResultMap"/>
+    </resultMap>
+
+</mapper>

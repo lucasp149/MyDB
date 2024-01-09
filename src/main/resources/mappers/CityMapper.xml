@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.CityRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into cities(name,zone_id) values (#{name},#{zone.id})
+    </insert>
+
+    <update id="updateById">
+        UPDATE cities set
+        name = #{city.name},
+        zone_id = #{city.zone.id}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from cities where id = #{id}
+    </delete>
+
+    <sql id="getter">
+        SELECT
+        c.id,
+        c.name,
+        z.id as zone_id,
+        z.name as zone_name
+        from cities c left join zones z
+        on c.zone_id = z.id
+    </sql>
+
+    <select id="getById" resultMap="CityResultMap">
+        <include refid="getter"/>
+        where c.id = #{id};
+    </select>
+
+    <select id="getAll" resultMap="CityResultMap">
+        <include refid="getter"/>
+    </select>
+
+    <resultMap id="CityResultMap" type="com.solvd.storeDataBase.domain.City" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="zone"
+                     columnPrefix="zone_"
+                     resultMap="com.solvd.storeDataBase.persistence.ZoneRepository.ZoneResultMap"/>
+    </resultMap>
+
+</mapper>

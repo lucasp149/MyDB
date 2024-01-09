@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.OrderRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into orders(date,payment_id,client_id,store_id)
+        values (#{date}, #{payment.id},#{client.id},#{store.id})
+    </insert>
+
+    <insert id="insertOrderProducts">
+        INSERT into order_products(orders_id,products_id, quantity) values (#{id},#{product},#{quantity})
+    </insert>
+
+    <update id="updateById">
+        UPDATE orders set
+        date = #{order.date},
+        payment_id = #{order.payment.id},
+        client_id = #{order.client.id},
+        store_id = #{order.store.id}
+        where id = #{id}
+    </update>
+
+    <update id="updateQuantitySpecificProduct">
+        UPDATE order_products set
+        quantity = #{quantity}
+        where orders_id = #{orderId} AND products_id = #{productId}
+    </update>
+
+    <delete id="deleteOrderProducts">
+        DELETE from order_products
+        where orders_id = #{id}
+    </delete>
+
+    <delete id="deleteOrderSpecificProduct">
+        DELETE from order_products
+        where orders_id = #{orderId} AND products_id = #{productId}
+    </delete>
+
+
+
+    <delete id="deleteById">
+        DELETE from orders where id = #{id}
+    </delete>
+
+    <sql id="getter">
+        SELECT
+        o.id,
+        o.date,
+        o.payment_id,
+        o.client_id,
+        o.store_id
+        from orders o
+    </sql>
+
+    <select id="getById" resultMap="OrderResultMap">
+        <include refid="getter"/>
+        where o.id = #{id};
+    </select>
+
+    <select id="getAll" resultMap="OrderResultMap">
+        <include refid="getter"/>
+    </select>
+
+    <select id="getProductQuantity">
+        SELECT quantity from order_products where orders_id = #{orderId} AND products_id = #{productId}
+    </select>
+
+    <select id="getProductsInOrder" resultMap="com.solvd.storeDataBase.persistence.ProductRepository.ProductResultMap">
+        select
+        p.id,
+        p.name,
+        p.description,
+        p.price,
+        p.deposit_id,
+        p.category_id
+        from order_products
+        inner join products p
+        on products_id = p.id
+        where orders_id = #{id};
+    </select>
+
+    <select id="getQuantitiesInOrder">
+        select
+        quantity
+        from order_products
+        where orders_id = #{id};
+    </select>
+
+
+    <resultMap id="OrderResultMap" type="com.solvd.storeDataBase.domain.Order" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="date" property="date"/>
+        <association column="payment_id" select="com.solvd.storeDataBase.persistence.PaymentRepository.getById"
+                     property="payment"/>
+        <association column="client_id" select="com.solvd.storeDataBase.persistence.ClientRepository.getById"
+                     property="client"/>
+        <association property="store" select="com.solvd.storeDataBase.persistence.StoreRepository.getById"
+                     column="store_id"/>
+        <collection property="products" javaType="List" column="id" ofType="Product" select="getProductsInOrder"/>
+        <collection property="quantities" javaType="List" column="id" ofType="Integer" select="getQuantitiesInOrder"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.CategoryRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into categories(name) values (#{name})
+    </insert>
+
+    <update id="updateById">
+        UPDATE categories set name = #{category.name} where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from categories where id = #{id}
+    </delete>
+
+    <select id="getById" resultMap="CategoriesResultMap">
+        SELECT id, name from categories where id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="CategoriesResultMap">
+        SELECT id, name from categories
+    </select>
+
+    <resultMap id="CategoriesResultMap" type="com.solvd.storeDataBase.domain.Category" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+</mapper>

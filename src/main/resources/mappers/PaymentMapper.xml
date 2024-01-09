@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.PaymentRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into payments(type) values (#{type})
+    </insert>
+
+    <update id="updateById">
+        UPDATE payments set type = #{payment.type} where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from payments where id = #{id}
+    </delete>
+
+    <select id="getById" resultMap="PaymentResultMap">
+        SELECT id, type from payments where id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="PaymentResultMap">
+        SELECT id, type from payments
+    </select>
+    
+    <resultMap id="PaymentResultMap" type="com.solvd.storeDataBase.domain.Payment" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="type" property="type"/>
+    </resultMap>
+    
+</mapper>

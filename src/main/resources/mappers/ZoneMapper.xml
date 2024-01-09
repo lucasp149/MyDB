@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.ZoneRepository">
+
+    <resultMap id="ZoneResultMap" type="com.solvd.storeDataBase.domain.Zone" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into zones(name) values (#{name})
+    </insert>
+
+    <update id="updateById" >
+        UPDATE zones set name = #{zone.name} where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from zones where id = #{id}
+    </delete>
+
+    <select id="getById" resultMap="ZoneResultMap">
+        SELECT id, name from zones where id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="ZoneResultMap">
+        SELECT id, name from zones
+    </select>
+
+
+
+</mapper>

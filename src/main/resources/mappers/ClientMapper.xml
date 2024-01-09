@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.storeDataBase.persistence.ClientRepository">
+
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT into clients(first_name,last_name,address_id,passport_id)
+        values (#{firstName},#{lastName},#{address.id},#{passport.id})
+    </insert>
+
+    <update id="updateById">
+        UPDATE clients set
+        first_name = #{client.firstName},
+        last_name = #{client.lastName},
+        address_id = #{client.address.id},
+        passport_id = #{client.passport.id}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from clients where id = #{id}
+    </delete>
+
+    <sql id="getter">
+        SELECT
+        c.id,
+        c.first_name,
+        c.last_name,
+        c.passport_id as passport_id,
+        a.id as address_id,
+        a.street_name as address_street_name,
+        a.number as address_number,
+        ci.id as address_city_id,
+        ci.name as address_city_name,
+        z.id as address_city_zone_id,
+        z.name as address_city_zone_name
+        from clients c
+        left join addresses a on a.id = c.address_id
+        left join cities ci on ci.id = a.city_id
+        left join zones z on z.id = ci.zone_id
+    </sql>
+
+    <select id="getById" resultMap="ClientResultMap">
+        <include refid="getter"/>
+        where c.id = #{id};
+    </select>
+
+    <select id="getAll" resultMap="ClientResultMap">
+        <include refid="getter"/>
+    </select>
+
+    <select id="checkPassport" resultMap="ClientResultMap">
+        SELECT * from clients inner join passports
+        on clients.passport_id = passports.id
+        where passports.number = #{passport.number};
+    </select>
+
+
+
+    <resultMap id="ClientResultMap" type="com.solvd.storeDataBase.domain.Client" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+        <association property="passport" select="com.solvd.storeDataBase.persistence.PassportRepository.getById" column="passport_id"/>
+        <association property="address"
+                     columnPrefix="address_"
+                     resultMap="com.solvd.storeDataBase.persistence.AddressRepository.AddressResultMap"/>
+    </resultMap>
+
+</mapper>
