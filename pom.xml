@@ -14,6 +14,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <myBatis-version>3.5.15</myBatis-version>
         <mySqlConnector-version>8.2.0</mySqlConnector-version>
+        <jaxb-version>4.0.4</jaxb-version>
+        <guava-version>0.0.4</guava-version>
+        <jackson-version>2.16.1</jackson-version>
     </properties>
 
     <dependencies>
@@ -55,6 +58,40 @@
             <artifactId>mybatis</artifactId>
             <version>${myBatis-version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-core -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${jaxb-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/dev.mccue/guava-reflect -->
+        <dependency>
+            <groupId>dev.mccue</groupId>
+            <artifactId>guava-reflect</artifactId>
+            <version>${guava-version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
 
     </dependencies>
 

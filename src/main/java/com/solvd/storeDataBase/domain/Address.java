@@ -1,6 +1,12 @@
 package com.solvd.storeDataBase.domain;
 
+import com.solvd.storeDataBase.domain.interfaces.SecondaryEntity;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="address")
 public class Address extends GeneralEntity implements SecondaryEntity<City> {
+    @XmlAttribute(name="id")
     private Long id;
     private String streetName;
     private Integer number;

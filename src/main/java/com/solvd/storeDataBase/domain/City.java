@@ -1,8 +1,15 @@
 package com.solvd.storeDataBase.domain;
 
+import com.solvd.storeDataBase.domain.interfaces.SecondaryEntity;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "city")
 public class City extends GeneralEntity implements SecondaryEntity<Zone> {
+    @XmlAttribute(name="id")
     private Long id;
     private String name;
+
     private Zone zone;
 
 
@@ -43,7 +50,7 @@ public class City extends GeneralEntity implements SecondaryEntity<Zone> {
     }
 
     public Zone getZone() {
-        return zone;
+        return this.zone;
     }
 
     public void setZone(Zone zone) {

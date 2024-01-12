@@ -1,7 +1,7 @@
 package com.solvd.storeDataBase.service.impl;
 
 import com.solvd.storeDataBase.domain.Order;
-import com.solvd.storeDataBase.exceptions.CantDeleteInexistentProductException;
+import com.solvd.storeDataBase.domain.exceptions.CantDeleteInexistentProductException;
 import com.solvd.storeDataBase.persistence.OrderRepository;
 import com.solvd.storeDataBase.persistence.implementation.myBatis.GeneralRepositoryImplMB;
 import com.solvd.storeDataBase.persistence.implementation.myBatis.OrderRepositoryImplMB;

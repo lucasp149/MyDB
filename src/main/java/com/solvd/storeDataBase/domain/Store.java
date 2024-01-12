@@ -1,5 +1,7 @@
 package com.solvd.storeDataBase.domain;
 
+import com.solvd.storeDataBase.domain.interfaces.SecondaryEntity;
+
 public class Store extends GeneralEntity implements SecondaryEntity<Address> {
     private Long id;
     private String name;

@@ -1,9 +1,15 @@
 package com.solvd.storeDataBase.domain;
 
+import com.solvd.storeDataBase.domain.interfaces.SecondaryEntity;
+import com.solvd.storeDataBase.domain.interfaces.ThirdEntity;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.math.BigDecimal;
 import java.util.Objects;
-
+@XmlRootElement(name="product")
 public class Product extends GeneralEntity implements SecondaryEntity<Deposit>, ThirdEntity<Category> {
+    @XmlAttribute(name="id")
     private Long id;
     private String name;
     private String description;
@@ -32,6 +38,15 @@ public class Product extends GeneralEntity implements SecondaryEntity<Deposit>, 
         setName(name);
         setDescription(description);
         setPrice(price);
+    }
+
+    public Product(Product product){
+        this.id = product.id;
+        this.name = product.name;
+        this.description = product.description;
+        this.price = product.price;
+        this.deposit = product.deposit;
+        this.category = product.category;
     }
 
     public Product(String name) {
@@ -101,7 +116,9 @@ public class Product extends GeneralEntity implements SecondaryEntity<Deposit>, 
         return "-------------- PRODUCT -------------- " +'\n'+
                 "** id=" + id +'\n' +
                 "** name='" + name + '\n' +
-                "** price=" + price + '\n';
+                "** price=" + price + '\n'
+                +"** deposit=" + deposit +"\n"
+                +"** category" + category;
     }
 
     @Override

@@ -1,8 +1,14 @@
 package com.solvd.storeDataBase.domain;
 
-import java.util.List;
+import com.solvd.storeDataBase.domain.interfaces.SecondaryEntity;
+import com.solvd.storeDataBase.domain.interfaces.ThirdEntity;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
-public class Client extends GeneralEntity implements SecondaryEntity<Address>,ThirdEntity<Passport> {
+import java.util.List;
+@XmlRootElement(name="client")
+public class Client extends GeneralEntity implements SecondaryEntity<Address>, ThirdEntity<Passport> {
+    @XmlAttribute(name = "id")
     private Long id;
     private String firstName;
     private String lastName;

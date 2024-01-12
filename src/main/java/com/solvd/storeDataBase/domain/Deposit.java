@@ -1,6 +1,12 @@
 package com.solvd.storeDataBase.domain;
 
-public class Deposit extends GeneralEntity implements SecondaryEntity<Address>{
+import com.solvd.storeDataBase.domain.interfaces.SecondaryEntity;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="deposit")
+public class Deposit extends GeneralEntity implements SecondaryEntity<Address> {
+    @XmlAttribute(name="id")
     private Long id;
     private String name;
     private Address address;

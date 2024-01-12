@@ -1,6 +1,11 @@
 package com.solvd.storeDataBase.domain;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "zone")
 public class Zone extends GeneralEntity {
+    @XmlAttribute(name="id")
     private Long id;
     private String name;
 

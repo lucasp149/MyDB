@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deposit id="20"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="deposit.xsd">
+
+    <name>Secret Deposit B1</name>
+    <address id="20">
+        <name>Secret Address B1</name>
+        <city id="20">
+            <name>Secret City B1</name>
+            <zone id="20">
+                <name>Secret Zone B1</name>
+            </zone>
+        </city>
+    </address>
+
+</deposit>

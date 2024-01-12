@@ -2,10 +2,9 @@ package com.solvd.storeDataBase.persistence.implementation.myBatis;
 
 import com.solvd.storeDataBase.ConnectToDbMyBatis;
 import com.solvd.storeDataBase.domain.Client;
-import com.solvd.storeDataBase.exceptions.PassportDuplicatedException;
+import com.solvd.storeDataBase.domain.exceptions.PassportDuplicatedException;
 import com.solvd.storeDataBase.persistence.ClientRepository;
 import com.solvd.storeDataBase.persistence.GeneralRepository;
-import com.solvd.storeDataBase.persistence.PassportRepository;
 import org.apache.ibatis.session.SqlSession;
 
 import java.sql.SQLException;

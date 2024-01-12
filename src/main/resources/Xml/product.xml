@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product id="20"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="product.xsd">
+
+    <name>Secret Product B1</name>
+    <description>This is a secret product</description>
+    <price>120</price>
+    <deposit id="20">
+
+        <name>Secret Deposit B1</name>
+        <address id="20">
+            <streetName>Secret Address B1</streetName>
+            <number>110</number>
+            <city id="20">
+                <name>Secret City B1</name>
+                <zone id="20">
+                    <name>Secret Zone B1</name>
+                </zone>
+            </city>
+        </address>
+
+    </deposit>
+    <category id="20">
+        <name>Secret Category B1</name>
+    </category>
+
+</product>

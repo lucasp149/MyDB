@@ -36,11 +36,10 @@ public class OrderRepositoryImplMB extends GeneralRepositoryImplMB<Order> implem
     public Integer getProductQuantity(Long orderId, Long productId) {
         try (SqlSession sqlSession = ConnectToDbMyBatis.getSessionFactory().openSession(true)) {
             OrderRepository repository = sqlSession.getMapper(OrderRepository.class);
-            if(repository.getProductQuantity(orderId,productId)==null){
+            if (repository.getProductQuantity(orderId, productId) == null) {
                 return 0;
-            }
-            else{
-                return repository.getProductQuantity(orderId,productId);
+            } else {
+                return repository.getProductQuantity(orderId, productId);
             }
         }
     }
@@ -49,7 +48,7 @@ public class OrderRepositoryImplMB extends GeneralRepositoryImplMB<Order> implem
     public void updateQuantitySpecificProduct(Long orderId, Long productId, int newQuantity) {
         try (SqlSession sqlSession = ConnectToDbMyBatis.getSessionFactory().openSession(true)) {
             OrderRepository repository = sqlSession.getMapper(OrderRepository.class);
-            repository.updateQuantitySpecificProduct(orderId,productId,newQuantity);
+            repository.updateQuantitySpecificProduct(orderId, productId, newQuantity);
         }
     }
 

@@ -1,0 +1,28 @@
+{
+    "id": 20,
+    "name": "Secret Product B1",
+    "description": "This is a secret product",
+    "price": 120,
+    "deposit": {
+      "id": 20,
+      "name": "Secret Deposit B1",
+      "address": {
+        "id": 20,
+        "streetName": "Secret Address B1",
+        "number": 110,
+        "city": {
+          "id": 20,
+          "name": "Secret City B1",
+          "zone": {
+            "id": 20,
+            "name": "Secret Zone B1"
+          }
+        }
+      }
+    },
+    "category": {
+      "id": 20,
+      "name": "Secret Category B1"
+    }
+
+}
