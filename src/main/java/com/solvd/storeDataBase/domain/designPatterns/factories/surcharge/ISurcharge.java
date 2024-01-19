@@ -1,4 +1,4 @@
-package com.solvd.storeDataBase.domain.factories.surcharge;
+package com.solvd.storeDataBase.domain.designPatterns.factories.surcharge;
 
 import com.solvd.storeDataBase.domain.Product;
 

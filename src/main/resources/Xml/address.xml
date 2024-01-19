@@ -2,7 +2,8 @@
 <address xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="address.xsd">
 
-    <name>Secret Address B1</name>
+    <streetName>Secret Address B1</streetName>
+    <number>123</number>
     <city id="20">
         <name>Secret City B1</name>
         <zone id="20">

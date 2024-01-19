@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<store id="20"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="store.xsd">
+
+    <name>Secret Store B1</name>
+    <address id="20">
+        <streetName>Secret Street</streetName>
+        <number>001</number>
+        <city id="20">
+            <name>LA city</name>
+            <zone id="20">
+                <name>Strange Zone</name>
+            </zone>
+        </city>
+    </address>
+
+</store>

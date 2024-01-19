@@ -1,4 +1,4 @@
-package com.solvd.storeDataBase.domain.factories.discountCoupon;
+package com.solvd.storeDataBase.domain.designPatterns.factories.discountCoupon;
 
 import java.math.BigDecimal;
 

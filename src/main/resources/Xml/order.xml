@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order id="20"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="order.xsd">
+
+    <date>2023-08-20</date>
+    <payment id="20">
+        <type>cash</type>
+    </payment>
+    <client id="20">
+        <firstName>Secret Name</firstName>
+        <lastName>Last Name</lastName>
+        <address id="20">
+            <streetName>Secret Address B1</streetName>
+            <number>100</number>
+            <city id="20">
+                <name>Secret City B1</name>
+                <zone id="20">
+                    <name>Secret Zone B1</name>
+                </zone>
+            </city>
+        </address>
+        <passport id="20">
+            <number>LP149</number>
+        </passport>
+    </client>
+    <store id="20">
+        <name>The Good Store</name>
+    </store>
+
+
+
+</order>

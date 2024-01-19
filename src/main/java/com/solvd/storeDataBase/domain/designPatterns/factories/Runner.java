@@ -1,11 +1,11 @@
-package com.solvd.storeDataBase.domain.factories;
+package com.solvd.storeDataBase.domain.designPatterns.factories;
 
 import com.solvd.storeDataBase.domain.Product;
+import com.solvd.storeDataBase.domain.designPatterns.factories.discountCoupon.exceededDiscountAmountException;
+import com.solvd.storeDataBase.domain.designPatterns.factories.surcharge.Surcharge;
 import com.solvd.storeDataBase.domain.exceptions.UnexpectedEnumCase;
-import com.solvd.storeDataBase.domain.factories.discountCoupon.DiscountCoupon;
-import com.solvd.storeDataBase.domain.factories.discountCoupon.exceededDiscountAmountException;
-import com.solvd.storeDataBase.domain.factories.surcharge.PriceModifierEnum;
-import com.solvd.storeDataBase.domain.factories.surcharge.Surcharge;
+import com.solvd.storeDataBase.domain.designPatterns.factories.discountCoupon.DiscountCoupon;
+import com.solvd.storeDataBase.domain.designPatterns.factories.surcharge.PriceModifierEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

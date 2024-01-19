@@ -1,0 +1,2 @@
+I will add to ProductWithBuilder the "stock" attribute. Then i'm implementing the observer design pattern
+to inform a Client when a product is out of stock

@@ -1,6 +1,6 @@
-package com.solvd.storeDataBase.domain.factories.discountCoupon;
+package com.solvd.storeDataBase.domain.designPatterns.factories.discountCoupon;
 
-import com.solvd.storeDataBase.domain.factories.PriceModifier;
+import com.solvd.storeDataBase.domain.designPatterns.factories.PriceModifier;
 
 public abstract class DiscountCoupon implements PriceModifier, IDiscountCoupon {
     // This class creates coupons that can be implemented later on Orders

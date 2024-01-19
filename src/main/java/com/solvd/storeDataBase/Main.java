@@ -13,7 +13,7 @@ public class Main {
         OrderRepository orderRep = new OrderRepositoryImplMB();
         OrderServiceImpl orders = new OrderServiceImpl();
 
-
+        System.out.println(orders.get(1L));
         int currentQ = orderRep.getProductQuantity(1L,9L);
         System.out.println(currentQ);
 

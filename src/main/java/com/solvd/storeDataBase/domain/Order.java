@@ -1,10 +1,14 @@
 package com.solvd.storeDataBase.domain;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-
+@XmlRootElement(name="order")
 public class Order extends GeneralEntity{
+    @XmlAttribute(name = "id")
     private Long id;
     private Date date;
     private Payment payment;

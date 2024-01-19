@@ -80,6 +80,8 @@ public class Address extends GeneralEntity implements SecondaryEntity<City> {
         this.city = city;
     }
 
+    // FACADE: This method gives the possibility to pass the composed address name (street + number) directly.
+    // is easy for the user and for reuse code on services
     public String getName(){
         return streetName+" "+Integer.toString(number);
     }

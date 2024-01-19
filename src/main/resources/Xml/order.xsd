@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="zoneType">
+        <xs:all>
+            <xs:element name="name" type="xs:string"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="passportType">
+        <xs:all>
+            <xs:element name="number" type="xs:string"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="cityType">
+        <xs:all>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="zone" type="zoneType"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="addressType">
+        <xs:all>
+            <xs:element name="streetName" type="xs:string"/>
+            <xs:element name="number" type="xs:int"/>
+            <xs:element name="city" type="cityType"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="paymentType">
+        <xs:all>
+            <xs:element name="type" type="xs:string"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="clientType">
+        <xs:all>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="address" type="addressType"/>
+            <xs:element name="passport" type="passportType"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="storeType">
+        <xs:all>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="address" type="addressType"/>
+            <xs:element name="passport" type="passportType"/>
+
+        </xs:all>
+        <xs:attribute name="id" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="order">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="date" type="xs:date"/>
+                <xs:element name="payment" type="paymentType"/>
+                <xs:element name="client" type="clientType"/>
+                <xs:element name="store" type="zoneType"/>
+            </xs:all>
+            <xs:attribute name="id" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

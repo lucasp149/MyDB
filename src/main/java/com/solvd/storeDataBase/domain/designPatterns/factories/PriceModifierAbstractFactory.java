@@ -1,9 +1,9 @@
-package com.solvd.storeDataBase.domain.factories;
+package com.solvd.storeDataBase.domain.designPatterns.factories;
 
+import com.solvd.storeDataBase.domain.designPatterns.factories.discountCoupon.CouponFactory;
+import com.solvd.storeDataBase.domain.designPatterns.factories.surcharge.PriceModifierEnum;
 import com.solvd.storeDataBase.domain.exceptions.UnexpectedEnumCase;
-import com.solvd.storeDataBase.domain.factories.discountCoupon.CouponFactory;
-import com.solvd.storeDataBase.domain.factories.surcharge.PriceModifierEnum;
-import com.solvd.storeDataBase.domain.factories.surcharge.SurchargeFactory;
+import com.solvd.storeDataBase.domain.designPatterns.factories.surcharge.SurchargeFactory;
 
 import java.math.BigDecimal;
 

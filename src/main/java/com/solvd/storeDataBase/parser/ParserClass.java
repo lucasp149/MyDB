@@ -1,16 +1,10 @@
 package com.solvd.storeDataBase.parser;
 
-import com.solvd.storeDataBase.domain.City;
-import com.solvd.storeDataBase.domain.Client;
-import com.solvd.storeDataBase.domain.Product;
-import com.solvd.storeDataBase.domain.Zone;
+import com.solvd.storeDataBase.domain.Order;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 public class ParserClass {
@@ -20,6 +14,7 @@ public class ParserClass {
 
     public static void main(String[] arg) {
 
+        /*
         LOGGER.info("DOM PARSER");
 
         Zone zone = ParserLibrary.parseToZone("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\zone.xml");
@@ -30,7 +25,8 @@ public class ParserClass {
 
 
         LOGGER.info("END OF DOM PARSER");
-
+*/
+        /*
         LOGGER.info("SAX PARSER");
 
         File fileReference = new File("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\client.xml");
@@ -45,7 +41,8 @@ public class ParserClass {
         }
 
         LOGGER.info("END OF SAX PARSER");
-
+        */
+        /*
         LOGGER.info("StAX PARSER");
 
         File secondFileReference = new File("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\city.xml");
@@ -53,9 +50,10 @@ public class ParserClass {
         LOGGER.info(ParserLibrary.StAXParserCity(secondFileReference));
 
         LOGGER.info("END OF StAX PARSER");
+        */
 
         LOGGER.info("JAXB PARSER");
-
+        /*
         File JAXBFileReference = new File("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\zone.xml");
 
         ParserLibrary<Zone> zoneParser = new ParserLibrary<>();
@@ -64,7 +62,8 @@ public class ParserClass {
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-
+*/
+        /*
         File cityFileReference = new File("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\city.xml");
 
         ParserLibrary<City> cityParser = new ParserLibrary<>();
@@ -74,8 +73,8 @@ public class ParserClass {
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-
-
+*/
+        /*
         File clientFileReference = new File("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\client.xml");
 
         ParserLibrary<Client> clientParser = new ParserLibrary<>();
@@ -85,7 +84,19 @@ public class ParserClass {
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+*/
 
+        File orderFileReference = new File("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\order.xml");
+
+        ParserLibrary<Order> orderParser = new ParserLibrary<>();
+
+        try {
+            LOGGER.info(orderParser.JAXBParser(orderFileReference, Order.class));
+        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+        /*
         File productFileReference = new File("J:\\JAVA automation\\DataBases\\MyDb_mybatis\\src\\main\\resources\\Xml\\product.xml");
 
         ParserLibrary<Product> productParser = new ParserLibrary<>();
@@ -95,12 +106,12 @@ public class ParserClass {
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-
+        */
         LOGGER.info("END OF JAXB PARSER");
 
 
         LOGGER.info("JACKSON PARSER");
-
+        /*
         productFileReference = new File("src/main/resources/Jsons/product.json");
 
         try {
@@ -109,7 +120,7 @@ public class ParserClass {
             throw new RuntimeException(e);
         }
 
-
+        */
         LOGGER.info("END OF JACKSON PARSER");
 
     }
